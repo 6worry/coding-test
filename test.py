@@ -1,2 +1,3 @@
-h, m, s = input().split(':')
-print(m)
+a = input()
+b = int(a)
+print('%x'%b)
