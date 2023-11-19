@@ -1,5 +1,2 @@
-a = input()
-a = float(a)
-print(a)
-print(a)
-print(a)
+h, m, s = input().split(':')
+print(m)
