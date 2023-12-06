@@ -37,3 +37,62 @@ def solution(arr):
 # [93, 30, 55]	[1, 30, 5]	[2, 1]
 # [95, 90, 99, 99, 80, 99]	[1, 1, 1, 1, 1, 1]	[1, 3, 2]
 
+def solution(progresses, speeds):
+    A = [] # progresses와 speeds 리스트 2개 저장
+    for p, s in zip(progresses, speeds): # 순서대로 비교
+       if len(A) == 0 or A[-1][0] < -((p-100)//s): # len(A) == 0 = 첫 반복인지 확인 후 맞으면 다음 작업이 A에 추가됨, A[-1][0] = 마지막 작업의 작업일, -((p-100)//s) = 작업기간
+            A.append([-((p-100)//s), 1]) # 현재작업일수와 배포개수 추가
+       else:
+            A[-1][1] += 1 # 이전작업일수에 대한 배포개수 1 증가
+    return [a[1] for a in A] # 배포일에 대한 배포개수 반환 a[0] = 배포일에 대한 작업기간 반환
+
+# stack-queue 3
+# 괄호가 바르게 짝지어졌다는 것은 '(' 문자로 열렸으면 반드시 짝지어서 ')' 문자로 닫혀야 한다는 뜻입니다. 예를 들어
+
+# "()()" 또는 "(())()" 는 올바른 괄호입니다.
+# ")()(" 또는 "(()(" 는 올바르지 않은 괄호입니다.
+# '(' 또는 ')' 로만 이루어진 문자열 s가 주어졌을 때, 문자열 s가 올바른 괄호이면 true를 return 하고, 올바르지 않은 괄호이면 false를 return 하는 solution 함수를 완성해 주세요.
+
+# 제한사항
+# 문자열 s의 길이 : 100,000 이하의 자연수
+# 문자열 s는 '(' 또는 ')' 로만 이루어져 있습니다.
+# 입출력 예
+# s	answer
+# "()()"	true
+# "(())()"	true
+# ")()("	false
+# "(()("	false
+
+def solution(s):
+    stack = []
+    for i in s:
+        if i == '(':  # '('는 stack에 추가
+            stack.append(i)
+        else:  # i == ')'인 경우
+            if stack == []:  # 괄호 짝이 ')'로 시작하면 False 반환
+                return False
+            else:
+                stack.pop()  # '('가 ')'와 짝을 이루면 stack에서 '(' 하나 제거
+    
+    return stack == [] # []이 비어있으면 True, 비어있지 않으면 '('가 있어 False 반환
+
+# stack-queue 6
+# 초 단위로 기록된 주식가격이 담긴 배열 prices가 매개변수로 주어질 때, 가격이 떨어지지 않은 기간은 몇 초인지를 return 하도록 solution 함수를 완성하세요.
+
+# 제한사항
+# prices의 각 가격은 1 이상 10,000 이하인 자연수입니다.
+# prices의 길이는 2 이상 100,000 이하입니다.
+# 입출력 예
+# prices	return
+# [1, 2, 3, 2, 3]	[4, 3, 1, 1, 0]
+
+def solution(prices):
+    answer = [0] * len(prices)
+    for i in range(len(prices)):
+        for j in range(i+1, len(prices)):
+            if prices[i] <= prices[j]:
+                answer[i] += 1
+            else:
+                answer[i] += 1
+                break
+    return answer
