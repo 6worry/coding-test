@@ -26,10 +26,8 @@
 import java.util.Scanner;
 import java.io.FileInputStream;
 
-class Solution
-{
-	public static void main(String args[]) throws Exception
-	{
+class Solution {
+	public static void main(String args[]) throws Exception {
 		Scanner sc = new Scanner(System.in);
 		int T;
 		T=sc.nextInt();
@@ -47,5 +45,7 @@ class Solution
         } else if(T2 == (T + 2)) {
             System.out.println("A");
         }
+
+        sc.close();
 	}
 }

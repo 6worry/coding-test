@@ -38,5 +38,7 @@ class Solution {
         }
  
         System.out.println(result);
+
+        sc.close();
     }
 }
