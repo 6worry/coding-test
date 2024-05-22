@@ -36,5 +36,7 @@ class Main {
 
             System.out.println(A + B);
         }
+
+        sc.close();
     }
 }
